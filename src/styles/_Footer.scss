@@ -1,0 +1,8 @@
+@import "_Variables";
+@import "../App.scss";
+footer {
+	background-color: $color-page;
+	color: #fff;
+	height: 3rem;
+	@include flex-center;
+}

@@ -1,0 +1,11 @@
+@import "_Variables";
+@import "../App.scss";
+nav {
+	background-color: $color-page;
+	h1 {
+		color: #fff;
+		font-size: 2.188rem;
+		@include flex-justify;
+		padding: 1.25rem;
+	}
+}
