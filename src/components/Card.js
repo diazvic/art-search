@@ -1,23 +1,34 @@
 import { DataContext } from "../context/DataContext";
 import { useContext } from "react";
 import Form from "./Form";
+import "../styles/_Card.scss";
 const Card = () => {
-	const { data } = useContext(DataContext);
+	const { data, results } = useContext(DataContext);
+
 	console.log("data cargada", data);
+	console.log(results);
 
 	if (!data) {
-		return <div>Cargando datos...</div>;
+		return <div>Loading data...</div>;
 	}
-
 	return (
 		<section>
 			<Form />
-			<h3>art</h3>
-			<div>
+			<div className="title-principal-section">
+				<h3>Results</h3>
+				<span className="result-count">{results}</span>
+			</div>
+			<div className="box-card">
 				{data.map((info) => (
-					<div key={info.id}>
-						<li>{info.title}</li>
-						<li>{info.date_display}</li>
+					<div key={info.id} className="ctn-card">
+						<img
+							src={`https://www.artic.edu/iiif/2/${info.image_id}/full/843,/0/default.jpg`}
+							alt=""
+						/>
+						<div className="box-info">
+							<p>{info.title}</p>
+							<p>{info.artist_title}</p>
+						</div>
 					</div>
 				))}
 			</div>

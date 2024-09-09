@@ -1,0 +1,39 @@
+@import "_Variables";
+@import "../App.scss";
+.title-principal-section {
+	border: 1px solid #000;
+	width: 9.375rem;
+	height: 5rem;
+	margin: 0.625rem;
+	@include flex-center;
+	flex-direction: column;
+	.result-count {
+		font-weight: bold;
+		font-size: 1.875rem;
+	}
+}
+.box-card {
+	@include flex-wrap;
+	justify-content: center;
+}
+.ctn-card {
+	background-color: $background-color-card;
+	margin: 10px;
+	width: 25rem;
+	height: 25rem;
+	@include flex-center;
+	@include flex-column;
+	img {
+		width: 14.375rem;
+		height: 18.75rem;
+	}
+	p {
+		color: #fff;
+	}
+}
+.box-info {
+	@include flex-center;
+	@include flex-column;
+	margin: 0.625rem;
+	padding: 0.625rem;
+}

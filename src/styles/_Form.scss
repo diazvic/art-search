@@ -1,0 +1,19 @@
+@import "_Variables";
+@import "../App.scss";
+form {
+	@include flex-space-between;
+}
+.flex-form {
+	@include flex-center;
+	label {
+		text-transform: uppercase;
+		font-weight: bold;
+	}
+}
+.button-form {
+	border: none;
+	border-radius: 0.313rem;
+	padding: 10px 20px;
+	color: #fff;
+	background-color: #000;
+}

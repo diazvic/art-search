@@ -1,7 +1,7 @@
-import { useState, useEffect, useContext } from "react";
 import { DataProvider } from "./context/DataContext";
 import Card from "./components/Card";
 import NavBar from "./components/NavBar";
+import Footer from "./components/Footer";
 const App = () => {
 	return (
 		<DataProvider>
@@ -9,6 +9,7 @@ const App = () => {
 			<div>
 				<Card />
 			</div>
+			<Footer />
 		</DataProvider>
 	);
 };
