@@ -8,7 +8,7 @@ const DataProvider = ({ children }) => {
 	const [nextPage, setNextPage] = useState(null);
 	useEffect(() => {
 		fetch(
-			"https://api.artic.edu/api/v1/artworks?fields=id,title,artist_display,date_display,main_reference_number,artist_title,image_id,date_start,publication_history"
+			"https://api.artic.edu/api/v1/artworks?fields=id,title,artist_display,date_display,main_reference_number,artist_title,image_id,date_start,publication_history,place_of_origin"
 		)
 			.then((res) => res.json())
 			.then((data) => {
