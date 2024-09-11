@@ -17,7 +17,9 @@
 	justify-content: center;
 }
 .ctn-card {
-	background-color: $background-color-card;
+	// background-color: $background-color-card;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
 	margin: 10px;
 	width: 25rem;
 	height: 25rem;
@@ -28,7 +30,7 @@
 		height: 18.75rem;
 	}
 	p {
-		color: #fff;
+		color: #000;
 	}
 }
 .box-info {
