@@ -1,0 +1,40 @@
+@import "_Variables";
+@import "../App.scss";
+.card-detail {
+	@include flex-center;
+	// flex-direction: column;
+	padding: 2rem;
+	.detail-container {
+		display: flex;
+		// flex-direction: column;
+		// align-items: center;
+		background-color: #fff;
+		border-radius: 8px;
+		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+		padding: 2rem;
+		// max-width: 600px;
+		width: 100%;
+		img {
+			// max-width: 100%;
+			width: 30%;
+			height: auto;
+			border-radius: 8px;
+			margin-bottom: 1.5rem;
+		}
+		h3 {
+			font-size: 1rem;
+			margin-bottom: 1rem;
+		}
+		p {
+			margin-bottom: 1rem;
+		}
+		.detail-box {
+			margin: 0.625rem;
+		}
+		.box-paragraph {
+			@include flex-column;
+			overflow-y: auto;
+			height: 18.75rem;
+		}
+	}
+}
