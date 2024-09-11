@@ -5,6 +5,7 @@ const CardDetail = () => {
 	const location = useLocation();
 
 	const { info } = location.state;
+	console.log(location);
 
 	console.log("Received info in detail page:", info);
 

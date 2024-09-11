@@ -2,7 +2,6 @@ import { DataContext } from "../context/DataContext";
 import { useContext } from "react";
 import Form from "./Form";
 import "../styles/_Card.scss";
-import { useNavigate } from "react-router-dom";
 import UnitCards from "./UnitCards";
 
 const Card = () => {

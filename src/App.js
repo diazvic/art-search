@@ -1,5 +1,5 @@
 import { DataProvider } from "./context/DataContext";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Card from "./components/Card";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
