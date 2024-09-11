@@ -2,6 +2,9 @@ import { DataContext } from "../context/DataContext";
 import { useContext } from "react";
 import Form from "./Form";
 import "../styles/_Card.scss";
+import { useNavigate } from "react-router-dom";
+import UnitCards from "./UnitCards";
+
 const Card = () => {
 	const { data, results } = useContext(DataContext);
 
@@ -11,6 +14,7 @@ const Card = () => {
 	if (!data) {
 		return <div>Loading data...</div>;
 	}
+
 	return (
 		<section>
 			<Form />
@@ -20,15 +24,9 @@ const Card = () => {
 			</div>
 			<div className="box-card">
 				{data.map((info) => (
+					//aca podria ser unitCard
 					<div key={info.id} className="ctn-card">
-						<img
-							src={`https://www.artic.edu/iiif/2/${info.image_id}/full/843,/0/default.jpg`}
-							alt=""
-						/>
-						<div className="box-info">
-							<p>{info.title}</p>
-							<p>{info.artist_title}</p>
-						</div>
+						<UnitCards info={info} />
 					</div>
 				))}
 			</div>
