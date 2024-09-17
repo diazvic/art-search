@@ -10,7 +10,6 @@ import "../styles/_Pagination.scss";
 const Pagination = () => {
 	const { nextUrl, prevUrl, arrowLastPage, arrowFirstPage } =
 		useContext(DataContext);
-	console.log(nextUrl);
 
 	return (
 		<div className="container-btn-pagination">
