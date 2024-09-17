@@ -5,30 +5,35 @@ import "../styles/_Card.scss";
 import UnitCards from "./UnitCards";
 
 const Card = () => {
-	const { data, results } = useContext(DataContext);
+	const { data, searchResults, results, currentSearch } =
+		useContext(DataContext);
+	// console.log("data", data);
+	// console.log(results);
+	const displayData = currentSearch ? searchResults : data;
 
-	console.log("data cargada", data);
-	console.log(results);
-
-	if (!data) {
+	if (!displayData) {
 		return <div>Loading data...</div>;
 	}
 
 	return (
 		<section>
 			<Form />
-			<div className="title-principal-section">
-				<h3>Results</h3>
-				<span className="result-count">{results}</span>
-			</div>
-			<div className="box-card">
-				{data.map((info) => (
-					//aca podria ser unitCard
-					<div key={info.id} className="ctn-card">
-						<UnitCards info={info} />
+			{!currentSearch && (
+				<>
+					<div className="title-principal-section">
+						<h3>Results</h3>
+						<span className="result-count">{results}</span>
 					</div>
-				))}
-			</div>
+					<div className="box-card">
+						{displayData.map((info) => (
+							//aca podria ser unitCard
+							<div key={info.id} className="ctn-card">
+								<UnitCards info={info} />
+							</div>
+						))}
+					</div>
+				</>
+			)}
 		</section>
 	);
 };
