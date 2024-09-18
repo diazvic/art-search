@@ -16,47 +16,46 @@ const Form = () => {
 		setSearchTerm(e.target.value);
 	};
 	return (
-		<form onSubmit={(e) => e.preventDefault()}>
-			<div>
-				<h2>Search</h2>
-				<CiSearch />
-				<input
-					type="search"
-					placeholder="Enter your search here"
-					value={searchTerm}
-					onChange={handleChange}
-				/>
-			</div>
-			<div className="flex-form">
-				<label>type</label>
-				<select>
-					<option>Author</option>
-					<option>Title</option>
-				</select>
-			</div>
-			<div className="flex-form">
-				<label>order</label>
-				<select>
-					<option>A-Z</option>
-					<option>Z-A</option>
-				</select>
-			</div>
-			<button className="button-form" type="submit" onClick={handleClick}>
-				Search
-			</button>
-			{searchResults.length > 0 && (
+		<>
+			<form onSubmit={(e) => e.preventDefault()}>
 				<div>
-					<h3>Search Results</h3>
-					<ul>
-						{searchResults.map((info) => (
-							<div key={info.id}>
-								<UnitCards info={info} />
-							</div>
-						))}
-					</ul>
+					<h2>Search</h2>
+					<CiSearch />
+					<input
+						type="search"
+						placeholder="Enter your search here"
+						value={searchTerm}
+						onChange={handleChange}
+					/>
+				</div>
+				<div className="flex-form">
+					<label>type</label>
+					<select>
+						<option>Author</option>
+						<option>Title</option>
+					</select>
+				</div>
+				<div className="flex-form">
+					<label>order</label>
+					<select>
+						<option>A-Z</option>
+						<option>Z-A</option>
+					</select>
+				</div>
+				<button className="button-form" type="submit" onClick={handleClick}>
+					Search
+				</button>
+			</form>
+			{searchResults.length > 0 && (
+				<div className="box-results">
+					{searchResults.map((info) => (
+						<div key={info.id}>
+							<UnitCards info={info} />
+						</div>
+					))}
 				</div>
 			)}
-		</form>
+		</>
 	);
 };
 

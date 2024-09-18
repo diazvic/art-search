@@ -17,3 +17,7 @@ form {
 	color: #fff;
 	background-color: #000;
 }
+.box-results {
+	@include flex-justify;
+	@include flex-wrap;
+}

@@ -5,7 +5,7 @@ import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 import CardDetail from "./components/CardDetail";
 import Pagination from "./components/Pagination";
-import Form from "./components/Form";
+// import Form from "./components/Form";
 const App = () => {
 	return (
 		<BrowserRouter>
