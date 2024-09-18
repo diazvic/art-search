@@ -12,12 +12,13 @@ const DataProvider = ({ children }) => {
 	const [nextPage, setNextPage] = useState(null);
 	const [lastPage, setLastPage] = useState(null);
 	const [firstPage, setFirstPage] = useState(null);
+	const [searchResults, setSearchResults] = useState([]); //saved new results with search
+	const [currentSearch, setCurrentSearch] = useState(null);
 	const fetchData = (url) => {
 		fetch(url)
 			.then((res) => res.json())
 			.then((data) => {
 				console.log("data total:", data);
-
 				console.log("data cargada:", data.data);
 				console.log(data.pagination.total);
 				setData(data.data);
@@ -31,9 +32,29 @@ const DataProvider = ({ children }) => {
 				setFirstPage(firstPageUrl);
 			});
 	};
+
+	const fetchSearchData = (searchTerm) => {
+		const searchUrl = `https://api.artic.edu/api/v1/artworks/search?q=${searchTerm}&fields=id,title,artist_display,date_display,main_reference_number,artist_title,image_id,date_start,publication_history,place_of_origin`;
+
+		fetch(searchUrl)
+			.then((res) => res.json())
+			.then((data) => {
+				console.log("search data:", data.data);
+				setSearchResults(data.data); // update results to search
+				setCurrentSearch(searchTerm);
+				console.log("search input:", searchTerm);
+			});
+	};
+
 	useEffect(() => {
 		fetchData(currentPage);
 	}, [currentPage]);
+
+	useEffect(() => {
+		if (currentSearch) {
+			fetchSearchData(currentSearch);
+		}
+	}, [currentSearch]);
 
 	const nextUrl = () => {
 		setCurrentPage(nextPage);
@@ -42,6 +63,7 @@ const DataProvider = ({ children }) => {
 	const prevUrl = () => {
 		setCurrentPage(prevPage);
 	};
+
 	const arrowLastPage = () => {
 		setCurrentPage(lastPage);
 	};
@@ -49,9 +71,20 @@ const DataProvider = ({ children }) => {
 	const arrowFirstPage = () => {
 		setCurrentPage(firstPage);
 	};
+
 	return (
 		<DataContext.Provider
-			value={{ data, results, nextUrl, prevUrl, arrowLastPage, arrowFirstPage }}
+			value={{
+				data,
+				results,
+				nextUrl,
+				prevUrl,
+				arrowLastPage,
+				arrowFirstPage,
+				searchResults,
+				fetchSearchData,
+				currentSearch,
+			}}
 		>
 			{children}
 		</DataContext.Provider>
