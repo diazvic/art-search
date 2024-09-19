@@ -1,11 +1,17 @@
 import { DataContext } from "../context/DataContext";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import "../styles/_Form.scss";
 import { CiSearch } from "react-icons/ci";
 import UnitCards from "./UnitCards";
 const Form = () => {
-	const { fetchSearchData, searchResults } = useContext(DataContext);
+	const { fetchSearchData, searchResults, sortData } = useContext(DataContext);
 	const [searchTerm, setSearchTerm] = useState("");
+	const [select, setSelect] = useState("title");
+	const [order, setOrder] = useState("asc");
+
+	useEffect(() => {
+		sortData(select, order);
+	}, [select, order, sortData]);
 
 	const handleClick = () => {
 		console.log("click");
@@ -15,6 +21,14 @@ const Form = () => {
 		console.log(e.target.value);
 		setSearchTerm(e.target.value);
 	};
+	const handleChangeSelect = (e) => {
+		console.log(e.target.value);
+		setSelect(e.target.value);
+	};
+	const handleChangeOrder = (e) => {
+		setOrder(e.target.value);
+	};
+
 	return (
 		<>
 			<form onSubmit={(e) => e.preventDefault()}>
@@ -30,16 +44,16 @@ const Form = () => {
 				</div>
 				<div className="flex-form">
 					<label>type</label>
-					<select>
-						<option>Author</option>
-						<option>Title</option>
+					<select onChange={handleChangeSelect} value={select}>
+						<option value="author">Author</option>
+						<option value="title">Title</option>
 					</select>
 				</div>
 				<div className="flex-form">
 					<label>order</label>
-					<select>
-						<option>A-Z</option>
-						<option>Z-A</option>
+					<select onChange={handleChangeOrder} value={order}>
+						<option value="asc">A-Z</option>
+						<option value="desc">Z-A</option>
 					</select>
 				</div>
 				<button className="button-form" type="submit" onClick={handleClick}>
