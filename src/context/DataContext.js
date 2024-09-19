@@ -1,4 +1,4 @@
-import React, { useState, useEffect, createContext } from "react";
+import React, { useState, useEffect, createContext, useCallback } from "react";
 
 const DataContext = createContext();
 
@@ -46,6 +46,30 @@ const DataProvider = ({ children }) => {
 			});
 	};
 
+	const sortData = useCallback(
+		(field, order) => {
+			const sortedData = [...data].sort((a, b) => {
+				if (field === "author") {
+					return order === "asc"
+						? a.artist_display.localeCompare(b.artist_display)
+						: b.artist_display.localeCompare(a.artist_display);
+				} else if (field === "title") {
+					return order === "asc"
+						? a.title.localeCompare(b.title)
+						: b.title.localeCompare(a.title);
+				}
+				return 0;
+			});
+			// The state is only updated if the sorted data is different
+			//from the current data, which prevents unnecessary re-renders
+			if (JSON.stringify(sortedData) !== JSON.stringify(data)) {
+				setData(sortedData);
+			}
+			console.log(sortedData);
+		},
+		[data]
+	);
+
 	useEffect(() => {
 		fetchData(currentPage);
 	}, [currentPage]);
@@ -83,7 +107,9 @@ const DataProvider = ({ children }) => {
 				arrowFirstPage,
 				searchResults,
 				fetchSearchData,
+				setData,
 				currentSearch,
+				sortData,
 			}}
 		>
 			{children}
