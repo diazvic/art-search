@@ -10,8 +10,10 @@ const Form = () => {
 	const [order, setOrder] = useState("asc");
 
 	useEffect(() => {
-		sortData(select, order);
-	}, [select, order, sortData]);
+		if (searchResults.length >= 0) {
+			sortData(select, order, searchResults);
+		}
+	}, [select, order, searchResults, sortData]);
 
 	const handleClick = () => {
 		console.log("click");
