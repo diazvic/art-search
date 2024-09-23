@@ -48,7 +48,12 @@ const DataProvider = ({ children }) => {
 
 	const sortData = useCallback(
 		(field, order) => {
-			const sortedData = [...data].sort((a, b) => {
+			const dataSetToSort = currentSearch ? searchResults : data;
+			if (dataSetToSort.length === 0) {
+				console.log("No data to sort");
+				return;
+			}
+			const sortedData = [...dataSetToSort].sort((a, b) => {
 				if (field === "author") {
 					return order === "asc"
 						? a.artist_display.localeCompare(b.artist_display)
@@ -62,12 +67,19 @@ const DataProvider = ({ children }) => {
 			});
 			// The state is only updated if the sorted data is different
 			//from the current data, which prevents unnecessary re-renders
-			if (JSON.stringify(sortedData) !== JSON.stringify(data)) {
-				setData(sortedData);
+			const dataIsEqual =
+				JSON.stringify(sortedData) === JSON.stringify(dataSetToSort);
+			if (!dataIsEqual) {
+				if (currentSearch) {
+					setSearchResults(sortedData);
+				} else {
+					setData(sortedData);
+				}
 			}
-			console.log(sortedData);
+
+			console.log("sortedData:", sortedData);
 		},
-		[data]
+		[data, searchResults, currentSearch]
 	);
 
 	useEffect(() => {
@@ -110,6 +122,7 @@ const DataProvider = ({ children }) => {
 				setData,
 				currentSearch,
 				sortData,
+				setSearchResults,
 			}}
 		>
 			{children}
