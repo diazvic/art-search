@@ -34,7 +34,7 @@ const Form = () => {
 	return (
 		<>
 			<form onSubmit={(e) => e.preventDefault()}>
-				<div>
+				<div className="box-form">
 					<h2>Search</h2>
 					<CiSearch />
 					<input

@@ -9,3 +9,15 @@ nav {
 		padding: 1.25rem;
 	}
 }
+.box-image {
+	display: block;
+}
+.image-museum {
+	width: 100%;
+}
+//mobile
+@media screen and (max-width: 768px) {
+	h1 {
+		text-align: center;
+	}
+}

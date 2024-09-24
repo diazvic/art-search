@@ -1,5 +1,6 @@
 @import "_Variables";
 @import "../App.scss";
+
 .title-principal-section {
 	border: 1px solid #000;
 	width: 9.375rem;
@@ -37,4 +38,15 @@
 	@include flex-column;
 	margin: 0.625rem;
 	padding: 0.625rem;
+}
+//mobile
+@media screen and (max-width: 768px) {
+	body {
+		overflow-y: hidden;
+		width: 100%;
+	}
+	section {
+		@include flex-center;
+		flex-direction: column;
+	}
 }
