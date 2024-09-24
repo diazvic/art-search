@@ -21,3 +21,35 @@ form {
 	@include flex-justify;
 	@include flex-wrap;
 }
+//mobile
+@media screen and (max-width: 768px) {
+	form {
+		@include flex-center;
+		flex-direction: column;
+		padding: 1rem;
+		width: 100%;
+	}
+	.flex-form {
+		flex-direction: column;
+		label {
+			border: 1px solid #eaeded;
+			margin: 10px 0;
+			padding: 10px;
+		}
+	}
+	.box-form {
+		@include flex-center;
+		width: 100%;
+		input {
+			width: 100%;
+			max-width: 500px;
+			font-size: 18px;
+		}
+	}
+	.button-form {
+		width: 100%;
+		font-size: 1rem;
+		padding: 15px;
+		margin-top: 5px;
+	}
+}
