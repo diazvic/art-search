@@ -38,3 +38,10 @@
 		}
 	}
 }
+//mobile
+@media screen and (max-width: 768px) {
+	.detail-container {
+		@include flex-column;
+		overflow: scroll;
+	}
+}
