@@ -26,7 +26,6 @@ const Card = () => {
 					</div>
 					<div className="box-card">
 						{displayData.map((info) => (
-							//aca podria ser unitCard
 							<div key={info.id} className="ctn-card">
 								<UnitCards info={info} />
 							</div>

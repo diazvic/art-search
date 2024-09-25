@@ -1,5 +1,4 @@
 import { useNavigate } from "react-router-dom";
-
 const UnitCards = ({ info }) => {
 	const navigate = useNavigate();
 	// console.log(info);
