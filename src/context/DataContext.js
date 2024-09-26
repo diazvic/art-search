@@ -14,6 +14,8 @@ const DataProvider = ({ children }) => {
 	const [firstPage, setFirstPage] = useState(null);
 	const [searchResults, setSearchResults] = useState([]); //saved new results with search
 	const [currentSearch, setCurrentSearch] = useState(null);
+	const [currentSearchPage, setCurrentSearchPage] = useState(1);
+	const [totalSearchPages, setTotalSearchPages] = useState(null);
 	const fetchData = (url) => {
 		fetch(url)
 			.then((res) => res.json())
@@ -33,8 +35,8 @@ const DataProvider = ({ children }) => {
 			});
 	};
 
-	const fetchSearchData = (searchTerm) => {
-		const searchUrl = `https://api.artic.edu/api/v1/artworks/search?q=${searchTerm}&fields=id,title,artist_display,date_display,main_reference_number,artist_title,image_id,date_start,publication_history,place_of_origin`;
+	const fetchSearchData = (searchTerm, page = 1) => {
+		const searchUrl = `https://api.artic.edu/api/v1/artworks/search?q=${searchTerm}&fields=id,title,artist_display,date_display,main_reference_number,artist_title,image_id,date_start,publication_history,place_of_origin&page=${page}`;
 
 		fetch(searchUrl)
 			.then((res) => res.json())
@@ -43,6 +45,11 @@ const DataProvider = ({ children }) => {
 				setSearchResults(data.data); // update results to search
 				setCurrentSearch(searchTerm);
 				console.log("search input:", searchTerm);
+				setCurrentSearchPage(data.pagination.current_page);
+				setTotalSearchPages(data.pagination.total_pages);
+				setNextPage(data.pagination.next_url);
+				setPrevPage(data.pagination.prev_url);
+				console.log("pagination info:", data.pagination);
 			});
 	};
 
@@ -93,19 +100,34 @@ const DataProvider = ({ children }) => {
 	}, [currentSearch]);
 
 	const nextUrl = () => {
-		setCurrentPage(nextPage);
+		if (currentSearch) {
+			fetchSearchData(currentSearch, currentSearchPage + 1);
+		} else {
+			setCurrentPage(nextPage);
+		}
 	};
-
 	const prevUrl = () => {
-		setCurrentPage(prevPage);
+		if (currentSearch) {
+			fetchSearchData(currentSearch, currentSearchPage - 1);
+		} else {
+			setCurrentPage(prevPage);
+		}
 	};
 
 	const arrowLastPage = () => {
-		setCurrentPage(lastPage);
+		if (currentSearch) {
+			fetchSearchData(currentSearch, totalSearchPages);
+		} else {
+			setCurrentPage(lastPage);
+		}
 	};
 
 	const arrowFirstPage = () => {
-		setCurrentPage(firstPage);
+		if (currentSearch) {
+			fetchSearchData(currentSearch, 1);
+		} else {
+			setCurrentPage(firstPage);
+		}
 	};
 
 	return (
@@ -123,6 +145,8 @@ const DataProvider = ({ children }) => {
 				currentSearch,
 				sortData,
 				setSearchResults,
+				currentSearchPage,
+				totalSearchPages,
 			}}
 		>
 			{children}
