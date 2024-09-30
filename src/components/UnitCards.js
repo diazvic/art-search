@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+
 const UnitCards = ({ info }) => {
 	const navigate = useNavigate();
 	// console.log(info);
@@ -16,7 +17,12 @@ const UnitCards = ({ info }) => {
 			<div className="box-info">
 				<p>{info.title}</p>
 				<p>{info.artist_title}</p>
-				<button onClick={() => handleClickDetail(info)}>See more</button>
+				<button
+					className="button-see-more"
+					onClick={() => handleClickDetail(info)}
+				>
+					see more
+				</button>
 			</div>
 		</div>
 	);
