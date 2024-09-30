@@ -1,9 +1,15 @@
 @import "_Variables";
 @import "../App.scss";
-
+.pagination-box {
+	font-size: 1.2rem;
+	font-weight: bold;
+	letter-spacing: 0.05rem;
+	padding: 0.5rem;
+}
 .container-btn-pagination {
 	@include flex-justify;
 	background-color: #000;
+	color: #fff;
 	button {
 		margin: 1rem;
 		background-color: $color-btn-pagination;
