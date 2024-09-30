@@ -16,6 +16,7 @@
 		padding: 0.625rem;
 		border: none;
 		border-radius: 0.313rem;
+		cursor: pointer;
 		&:hover {
 			background-color: $color-btn-pagination-hover;
 			transform: scale(1.05);
