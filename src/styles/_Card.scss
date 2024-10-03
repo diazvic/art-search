@@ -30,7 +30,14 @@
 		height: 18.75rem;
 	}
 	p {
+		text-align: center;
 		color: #000;
+		width: 300px;
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 1;
+		overflow: hidden;
+		line-clamp: 2;
 	}
 }
 .box-info {
