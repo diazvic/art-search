@@ -19,6 +19,7 @@ const CardDetail = () => {
 				<div className="detail-box">
 					<h3>Year: {info.date_start}</h3>
 					<h3>{info.place_of_origin}</h3>
+					<h3>{info.title}</h3>
 					<h3>{info.artist_display}</h3>
 					<div className="box-paragraph">
 						<p>
