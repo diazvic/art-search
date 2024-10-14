@@ -1,8 +1,11 @@
+import { useContext } from "react";
+import { ThemeContext } from "../context/ThemeContext";
 import { useNavigate } from "react-router-dom";
 
 const UnitCards = ({ info }) => {
 	const navigate = useNavigate();
 	// console.log(info);
+	const { theme } = useContext(ThemeContext);
 
 	const handleClickDetail = (info) => {
 		navigate("/detail", { state: { info } });
@@ -14,7 +17,7 @@ const UnitCards = ({ info }) => {
 				src={`https://www.artic.edu/iiif/2/${info.image_id}/full/843,/0/default.jpg`}
 				alt=""
 			/>
-			<div className="box-info">
+			<div className={`box-info ${theme}`}>
 				<p>{info.title}</p>
 				<p>{info.artist_title}</p>
 				<button

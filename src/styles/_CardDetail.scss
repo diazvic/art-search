@@ -38,6 +38,20 @@
 		}
 	}
 }
+/*styles for dark mode */
+.card-detail.dark {
+	background-color: var(--background-color);
+}
+.detail-container.dark {
+	background-color: var(--card-background);
+}
+.detail-box.dark {
+	h3,
+	.detail-paragraph {
+		color: #fff;
+	}
+}
+
 //mobile
 @media screen and (max-width: 768px) {
 	.detail-container {

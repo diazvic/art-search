@@ -2,6 +2,8 @@
 @import "../App.scss";
 nav {
 	background-color: $color-page;
+	display: flex;
+	justify-content: space-around;
 	h1 {
 		color: #fff;
 		font-size: 2.188rem;
@@ -15,9 +17,29 @@ nav {
 .image-museum {
 	width: 100%;
 }
+.button-theme {
+	background: none;
+	border: none;
+	cursor: pointer;
+}
+nav.dark {
+	background-color: #121212;
+	color: #fff;
+}
+/*styles for dark mode */
+.box-image.dark {
+	background-color: var(--background-color);
+}
+.sunny-icon.dark {
+	color: #ffa500;
+}
 //mobile
 @media screen and (max-width: 768px) {
 	h1 {
 		text-align: center;
+	}
+	nav {
+		display: flex;
+		flex-direction: column;
 	}
 }

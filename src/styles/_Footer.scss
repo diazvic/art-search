@@ -6,3 +6,7 @@ footer {
 	height: 3rem;
 	@include flex-center;
 }
+/*styles for dark mode */
+footer.dark {
+	background-color: var(--background-color);
+}

@@ -1,4 +1,5 @@
 import { DataProvider } from "./context/DataContext";
+import { ThemeProvider } from "./context/ThemeContext";
 import { Routes, Route, useLocation } from "react-router-dom";
 import Card from "./components/Card";
 import NavBar from "./components/NavBar";
@@ -9,13 +10,15 @@ const App = () => {
 	const location = useLocation();
 	return (
 		<DataProvider>
-			<NavBar />
-			<Routes>
-				<Route path="/" element={<Card />} />
-				<Route path="/detail" element={<CardDetail />} />
-			</Routes>
-			{location.pathname !== "/detail" && <Pagination />}
-			<Footer />
+			<ThemeProvider>
+				<NavBar />
+				<Routes>
+					<Route path="/" element={<Card />} />
+					<Route path="/detail" element={<CardDetail />} />
+				</Routes>
+				{location.pathname !== "/detail" && <Pagination />}
+				<Footer />
+			</ThemeProvider>
 		</DataProvider>
 	);
 };
