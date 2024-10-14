@@ -63,6 +63,23 @@
 		transform: scale(1.05);
 	}
 }
+/*styles for dark mode */
+.card-container.dark {
+	color: var(--text-color);
+	background-color: var(--background-color);
+}
+.title-principal-section.dark {
+	border: var(--border);
+}
+.ctn-card.dark {
+	background-color: var(--card-background);
+	border: 1px solid var(--card-border);
+}
+.box-info.dark {
+	p {
+		color: #fff;
+	}
+}
 //mobile
 @media screen and (max-width: 768px) {
 	body {
